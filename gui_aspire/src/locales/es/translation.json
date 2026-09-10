@@ -1,0 +1,275 @@
+{
+    "sidebar": {
+        "active_workspace": "Espacio de Trabajo Activo",
+        "current_step": "Paso Actual",
+        "memory_monitor": "Monitor de Memoria",
+        "repository": "Repositorio",
+        "versions": {
+            "aspire": "Aspire",
+            "pipeline": "Pipeline",
+            "cdm": "Esquema CDM"
+        }
+    },
+    "app": {
+        "loading": "CARGANDO MOTOR ASPIRE...",
+        "footer": "ASPIRE Framework • Entorno de Investigación Interno • 2026"
+    },
+    "steps": {
+        "welcome": {
+            "name": "Inicio",
+            "desc": "Introducción del Proyecto"
+        },
+        "data": {
+            "name": "Mapear datos",
+            "desc": "Paso 1: Mapear Datos"
+        },
+        "analysis": {
+            "name": "Ejecutar análisis",
+            "desc": "Paso 2: Ejecutar Análisis"
+        },
+        "results": {
+            "name": "Resultados",
+            "desc": "Paso 3: Recuperar Resultados"
+        }
+    },
+    "welcome": {
+        "subtitle": "Analytic Software Pipeline Interface",
+        "reproducible": "for Reproducible Execution",
+        "project_label": "Proyecto:",
+        "steps": {
+            "step1": {
+                "title": "1. Mapear Datos",
+                "desc": "Sincronice sus fuentes de datos garantizando la integridad del Modelo Común de Datos"
+            },
+            "step2": {
+                "title": "2. Ejecutar Análisis",
+                "desc": "Ejecute scripts de análisis y supervise su ejecución."
+            },
+            "step3": {
+                "title": "3. Resultados",
+                "desc": "Acceda a resultados, informes y logs de ejecución."
+            }
+        },
+        "download": {
+            "button": "Descargar documentación",
+            "processing": "Procesando...",
+            "toast_title": "Generando ZIP de documentación...",
+            "error_title": "Error",
+            "error_text": "No se pudo generar la documentación"
+        }
+    },
+    "data_upload": {
+        "title": "Mapee sus datos",
+        "advice_label": "CONSEJO:",
+        "title_section": "Carga de Datos",
+        "subtitle": "Seleccione el proyecto de investigación y cargue los datos requeridos para el análisis. La extracción de sus sistemas de información sanitaria debe cumplir estrictamente con las especificaciones del modelo de datos del caso de uso correspondiente.",
+        "protocol_label": "Protocolo de Integridad y Carga",
+        "rule_cleanup": "Cada nueva carga de ficheros inicia un proceso de limpieza integral. Los datos previos de cada entidad serán eliminados para garantizar la integridad de la nueva serie. Por ello, es necesario subir el conjunto completo en cada ocasión.",
+        "rule_segments": "Para volúmenes de datos elevados, el sistema permite la carga de archivos segmentados. Estos serán mapeados de forma conjunta a la misma entidad siempre que compartan una estructura de cabeceras idéntica.",
+        "subtitle_files": "Seleccione los archivos CSV de su sistema. Recomendamos que sigan la codificación UTF-8 sin BOM y con el separador ' | '.",
+        "context": {
+            "title": "Referencia de Contexto",
+            "no_project": "Sin Proyecto Seleccionado",
+            "required_tables": "Tablas Requeridas"
+        },
+        "dropzone": {
+            "title": "Subir Dataset",
+            "ready": "ARCHIVOS LISTOS",
+            "idle": "Prepara tus archivos CSV (Arrastrar y Soltar)",
+            "dragging": "Suelta los archivos aquí",
+            "format_error_title": "Error de Formato",
+            "format_error_text": "Por favor, suelta archivos .csv válidos"
+        },
+        "pipeline": {
+            "steps": [
+                "Subiendo y Mapeando Datos",
+                "Comprobando Sintaxis e Integridad",
+                "Ejecutando Reglas de Validación",
+                "Ejecutando Evaluación de Calidad (DQA)"
+            ],
+            "btn_execute": "Ejecutar el proceso de validación",
+            "btn_running": "Pipeline en Ejecución...",
+            "btn_failed": "Fallo en la Ejecución del Pipeline",
+            "btn_reset": "Limpiar Consola y Resultados",
+            "success_msg": "Ejecución técnica finalizada con éxito",
+            "human_notice": "El proceso ha concluido sin incidencias en el sistema. No obstante, la correcta ejecución técnica no garantiza la ausencia de advertencias o discrepancias lógicas en el contenido de los datos. Se recomienda realizar una revisión exhaustiva de los logs para confirmar que el volumen de registros procesados coincide con el esperado y que no se han generado avisos de integridad durante la carga.",
+            "action_check": "Protocolo de revisión de logs y registros",
+            "halted_msg": "Ejecución del pipeline detenida. Revisa el informe para más detalles.",
+            "no_files_title": "Sin archivos",
+            "no_files_text": "Selecciona archivos CSV primero."
+        },
+        "terminal": {
+            "title": "Stream de Consola del Sistema",
+            "failed": "FALLIDO"
+        },
+        "logs": {
+            "inspect_upload": "Log de Mapeo",
+            "inspect_syntax": "Log de Sintaxis",
+            "inspect_rules": "Log de Reglas",
+            "inspect_dqa": "Log de Calidad (DQA)",
+            "btn_label": "Inspeccionar {{process}}",
+            "no_logs": "No hay logs disponibles para este proceso todavía.",
+            "close": "CERRAR INSPECTOR",
+            "error": "No se pudo recuperar el archivo de log"
+        },
+        "audit": {
+            "results_title": "Auditoría de Calidad de Datos",
+            "records": "registros",
+            "records_vault": "{{count}} registros cargados",
+            "not_found": "Entidad no encontrada",
+            "fatal": "INCUMPLIMIENTO CRÍTICO",
+            "verified": "Verificado",
+            "details_label": "Detalles",
+            "view_fatal": "Ver Incumplimiento",
+            "summary_title": "Resumen de Calidad",
+            "rules": "Reglas de Validación",
+            "catalog": "Mapeo de Catálogos",
+            "nulls": "Campos Vacíos",
+            "log_notice": "Para obtener un desglose fila por fila de estos errores, consulte el log de auditoría completo en la sección de 'Inspección de Logs' situada bajo la terminal.",
+            "fatal_notice": "Se ha detectado un incumplimiento crítico del modelo de datos en esta entidad. Por favor, revise la especificación técnica, el log detallado y, si el error persiste, contacte con el nodo coordinador."
+        },
+        "reset": {
+            "title": "¿Reiniciar Espacio de Trabajo?",
+            "text": "Esto borrará los logs actuales y los resultados de calidad.",
+            "confirm": "Sí, reiniciar",
+            "cancel": "Cancelar"
+        }
+    },
+    "analysis": {
+        "header": {
+            "step": "Análisis",
+            "title": "Ejecutar análisis",
+            "description": "Ejecute los scripts de análisis proporcionados por los coordinadores del proyecto. Una vez finalizados, podrá consultar los resultados detallados y auditar el código fuente en la sección de 'Resultados'."
+        },
+        "update_banner": {
+            "title": "Actualización Disponible",
+            "desc": "Nuevas mejoras analíticas encontradas en el repositorio.",
+            "btn_sync": "Sincronizar scripts",
+            "btn_syncing": "Sincronizando..."
+        },
+        "db_catalog": {
+            "title": "Entidades mapeadas",
+            "no_tables": "No se encontraron entidades mapeadas",
+            "btn_purge": "Vaciar entidades del proyecto",
+            "purge_confirm": {
+                "title": "¿Eliminar datos del proyecto?",
+                "text": "Esta acción eliminará todos los registros de las entidades que han sido mapeadas en el Modelo Común de Datos.",
+                "btn": "Sí, eliminar registros",
+                "cancel": "Cancelar",
+                "success": "Registros eliminados",
+                "success_text": "Las entidades del proyecto se han vaciado correctamente."
+            }
+        },
+        "pipelines": {
+            "title": "Scripts de análisis disponibles",
+            "btn_check": "Buscar Actualizaciones",
+            "btn_checking": "Buscando...",
+            "btn_launch": "Lanzar",
+            "version_label": "Ver.",
+            "check_swal": {
+                "title": "¿Buscar Actualizaciones?",
+                "text": "El sistema establecerá una conexión temporal con <b>GitHub.com</b> para verificar si existe una versión más reciente.",
+                "info": "Esta acción requiere acceso a internet. No se transmitirá ningún dato del proyecto ni resultados clínicos.",
+                "btn_connect": "Conectar y Buscar"
+            },
+            "up_to_date": {
+                "title": "Sistema Actualizado",
+                "text": "Tu versión actual ({{version}}) es la última disponible."
+            },
+            "new_version_toast": "¡Nueva versión de análisis disponible!"
+        },
+        "sync_swal": {
+            "title": "Conexión Externa Requerida",
+            "text": "El sistema va a establecer una conexión segura con <b>GitHub.com</b> para sincronizar las rutinas analíticas.",
+            "warning_scope": "Alcance de la Actualización:",
+            "warning_desc": "Se descargará y extraerá un <b>archivo ZIP</b>. Solo se actualizarán los scripts en <b>your_project/src/analysis-scripts</b>.",
+            "dep_title": "Aviso de Librerías y Dependencias:",
+            "dep_desc": "Si el código nuevo requiere <b>nuevas librerías</b>, esta sincronización no será suficiente. En esos casos, debe actualizar la <b>imagen Docker</b>.",
+            "note_title": "Nota de Seguridad y Conectividad:",
+            "note_desc": "Si su política de seguridad restringe conexiones salientes, actualice manualmente la <b>infraestructura Docker</b>.",
+            "current_engine": "Motor Actual",
+            "target_release": "Versión Objetivo",
+            "btn_allow": "Permitir y Sincronizar"
+        },
+        "stop": {
+            "title": "¿Detener proceso?",
+            "text": "Esto finalizará el script inmediatamente. Se podrían perder progresos no guardados.",
+            "confirm": "Detener ahora",
+            "success_title": "Detenido",
+            "success_text": "El proceso ha sido finalizado.",
+            "error": "No se pudo detener el proceso."
+        },
+        "execution_finished": {
+            "title": "Análisis Completado",
+            "text": "El script '{{script}}' ha finalizado correctamente."
+        },
+        "terminal": {
+            "btn_clear": "Limpiar salida de consola",
+            "title_output": "Stream de Consola del Sistema",
+            "title_update": "Log de Actualización del Sistema",
+            "launching": "[SISTEMA] Iniciando {{name}}...",
+            "update_start": "[ACTUALIZACIÓN] Handshake iniciado. Esperando stream de GitHub...",
+            "notice": "⚠️ AVISO DEL SISTEMA: Un proceso de análisis se está ejecutando en segundo plano.",
+            "active_script": "Script activo: {{name}}",
+            "wait_notice": "La interfaz se desbloqueará automáticamente al finalizar.",
+            "btn_stop": "FORZAR PARADA",
+            "terminated_by_user": "PROCESO FINALIZADO POR EL USUARIO.",
+            "finished_success": "EJECUCIÓN FINALIZADA CON ÉXITO.",
+            "status_failed": "FALLO EN LA EJECUCIÓN",
+            "error_notice": "El script ha terminado con errores. Por favor, revisa las líneas del log."
+        }
+    },
+    "results": {
+        "header": {
+            "step": "Fase de Resultados",
+            "title": "Consulte, descargue y audite los resultados.",
+            "subtitle": "Explore los informes generados, descargue los archivos de salida finales o inspeccione el código fuente original para garantizar la transparencia del proceso.",
+            "vault_explorer": "Gestor de archivos",
+            "syncing": "Sincronizando...",
+            "artifacts_found": "{{count}} archivos encontrados",
+            "btn_bundle": "Descargar todo",
+            "btn_processing": "Procesando...",
+            "btn_purge": "Borrar todo"
+        },
+        "tabs": {
+            "analysis": "Resultados de Análisis",
+            "dqa": "Validador y DQA",
+            "logs": "Logs del Sistema",
+            "audit": "Inspección de Código"
+        },
+        "sidebar": {
+            "codebase_manifest": "Listado de Código",
+            "file_manifest": "Listado de Archivos",
+            "source": "Origen"
+        },
+        "viewport": {
+            "inspection": "Inspección de Código del Sistema",
+            "preview": "Vista previa del archivo",
+            "download": "Descargar fichero",
+            "preparing": "Preparando...",
+            "read_only": "Modo Solo Lectura",
+            "integrity_stream": "Flujo de integridad de origen",
+            "artifact_stream": "Flujo de datos del archivo",
+            "waiting": "Esperando flujo de datos...",
+            "standby_title": "Gestor de archivos",
+            "standby_desc": "Seleccione un archivo para visualizar su contenido"
+        },
+        "download_toast": "Preparando descarga: {{filename}}",
+        "purge_swal": {
+            "title": "¿VACIAR RESULTADOS DEL PROYECTO?",
+            "text": "Esta acción eliminará todos los archivos de salida y reseteará la base de datos de análisis. No se puede deshacer.",
+            "btn_confirm": "SÍ, VACIAR TODO",
+            "success_title": "Repositorio vacío",
+            "error_text": "Error al intentar vaciar los archivos."
+        }
+    },
+    "footer": {
+        "about": "Acerca de",
+        "authors": "Autores",
+        "funding": "Financiación",
+        "terms": "Términos y Condiciones",
+        "contact": "Contacto",
+        "recommendations_title": "Ecosistema de Herramientas",
+        "framework": "ASPIRE Framework • Entorno de Investigación Interno • 2026"
+    }
+}

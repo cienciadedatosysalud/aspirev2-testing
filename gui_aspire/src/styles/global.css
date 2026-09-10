@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 1s linear infinite;
+}
+
+/* Definición del tema según el estándar v4 */
+@theme {
+  --color-aspire-blue: #3C64A3;
+  --color-aspire-light-blue: #4D76B2;
+  --color-aspire-teal: #008C96;
+  --color-aspire-cyan: #0BB7D6;
+  --color-aspire-yellow: #FED56D;
+  --color-aspire-black: #1D1D1B;
+  --color-aspire-gray: #333333;
+  --color-aspire-bg: #F8FAFC;
+}
+
+/* Usamos @utility para nuevas clases en v4, es más moderno que @layer components */
+@utility aspire-card {
+  background-color: white;
+  border-width: 1px;
+  border-color: var(--color-slate-300);
+  border-radius: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  transition-property: all;
+  transition-duration: 300ms;
+  overflow: hidden;
+}
+
+@utility aspire-card-interactive {
+  @apply aspire-card cursor-pointer;
+  &:hover {
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-aspire-blue);
+  }
+}
+
+@utility section-title {
+  @apply text-5xl font-black tracking-tighter italic mb-4;
+  color: var(--color-aspire-blue);
+}
+
+@utility section-step {
+  @apply font-black text-[15px] uppercase tracking-[0.3em] mb-2 block;
+  color: var(--color-aspire-teal);
+}
+
+@utility btn-aspire-action {
+  background-color: var(--color-aspire-teal);
+  @apply text-white transition-all rounded-xl font-bold px-6 py-3 shadow-lg flex items-center justify-center gap-2;
+  &:hover {
+    background-color: var(--color-aspire-cyan);
+  }
+}
+
+/* Animación de entrada para las secciones */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

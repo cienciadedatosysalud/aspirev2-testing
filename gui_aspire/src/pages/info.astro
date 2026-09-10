@@ -1,0 +1,10 @@
+---
+// src/pages/info.astro
+import Layout from '../layouts/Layout.astro';
+import InfoPage from '../components/About.jsx';
+---
+
+<Layout title="ASPIRE | Info & Legal">
+    {/* Usamos client:load para que los efectos de scroll funcionen */}
+    <InfoPage client:only="react" />
+</Layout>

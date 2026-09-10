@@ -1,0 +1,274 @@
+{
+    "sidebar": {
+        "active_workspace": "Active Workspace",
+        "current_step": "Current Step",
+        "memory_monitor": "Memory Monitor",
+        "repository": "Repository",
+        "versions": {
+            "aspire": "Aspire",
+            "pipeline": "Pipeline",
+            "cdm": "CDM Schema"
+        }
+    },
+    "app": {
+        "loading": "LOADING ASPIRE ENGINE...",
+        "footer": "ASPIRE Framework • Internal Research Environment • 2026"
+    },
+    "steps": {
+        "welcome": {
+            "name": "Home",
+            "desc": "Project Introduction"
+        },
+        "data": {
+            "name": "Map your data",
+            "desc": "Step 1: Map Data"
+        },
+        "analysis": {
+            "name": "Run analysis",
+            "desc": "Step 2: Run Analysis"
+        },
+        "results": {
+            "name": "Outputs",
+            "desc": "Step 3: Retrieve Results"
+        }
+    },
+    "welcome": {
+        "subtitle": "Analytic Software Pipeline Interface",
+        "reproducible": "for Reproducible Execution",
+        "project_label": "Project:",
+        "steps": {
+            "step1": {
+                "title": "1. Map Data",
+                "desc": "Synchronize your data sources ensuring Common Data Model integrity."
+            },
+            "step2": {
+                "title": "2. Run analysis",
+                "desc": "Launch analytic scripts and monitor execution."
+            },
+            "step3": {
+                "title": "3. Outputs",
+                "desc": "Access artifacts, reports, and execution logs."
+            }
+        },
+        "download": {
+            "button": "Download documentation",
+            "processing": "Processing...",
+            "toast_title": "Generating documentation ZIP...",
+            "error_title": "Error",
+            "error_text": "Could not generate documentation"
+        }
+    },
+    "data_upload": {
+        "title": "Map your data",
+        "advice_label": "ADVICE:",
+        "title_section": "Data Upload",
+        "protocol_label": "Integrity and Upload Protocol",
+        "rule_cleanup": "Each new file upload initiates a comprehensive cleaning process. Previous data for each entity will be deleted to ensure the integrity of the new series. Therefore, the complete set of files must be uploaded every time.",
+        "rule_segments": "For high data volumes, the system allows for segmented file uploads. These will be mapped together to the same entity as long as they share an identical header structure.",
+        "subtitle_files": "Select the CSV files from your system. We recommend using UTF-8 encoding without a BOM and with the “|” delimiter.",
+        "context": {
+            "title": "Context Reference",
+            "no_project": "No Project Selected",
+            "required_tables": "Required Tables"
+        },
+        "dropzone": {
+            "title": "Upload Dataset",
+            "ready": "FILES READY",
+            "idle": "Stage your CSV files (Drag & Drop)",
+            "dragging": "Drop files here",
+            "format_error_title": "Format Error",
+            "format_error_text": "Please drop valid .csv files"
+        },
+        "pipeline": {
+            "steps": [
+                "Uploading and Mapping Data",
+                "Checking Syntax & Integrity",
+                "Executing Validation Rules",
+                "Running Data Quality Assessment (DQA)"
+            ],
+            "btn_execute": "Run validation process",
+            "btn_running": "Pipeline Running...",
+            "btn_failed": "Pipeline Execution Failed",
+            "btn_reset": "Clear Console & Results",
+            "success_msg": "Technical execution completed successfully",
+            "human_notice": "The process has concluded without system incidents. However, successful technical execution does not guarantee the absence of warnings or logical discrepancies within the data content. A thorough review of the logs is recommended to confirm that the volume of processed records matches expectations and that no integrity alerts were generated during the load.",
+            "action_check": "Log and record review protocol",
+            "halted_msg": "Pipeline execution halted. Check the report below for details.",
+            "no_files_title": "No files",
+            "no_files_text": "Select CSV files first."
+        },
+        "terminal": {
+            "title": "System Console Stream",
+            "failed": "FAILED"
+        },
+        "logs": {
+            "inspect_upload": "Mapping Log",
+            "inspect_syntax": "Syntax Log",
+            "inspect_rules": "Rules Log",
+            "inspect_dqa": "Quality Log (DQA)",
+            "btn_label": "Inspect {{process}}",
+            "no_logs": "No logs available for this process yet.",
+            "close": "CLOSE INSPECTOR",
+            "error": "Could not retrieve log file"
+        },
+        "audit": {
+            "results_title": "Data Quality Audit",
+            "records": "records",
+            "records_vault": "{{count}} records loaded",
+            "not_found": "Entity not found",
+            "fatal": "CRITICAL NON-COMPLIANCE",
+            "verified": "Verified",
+            "details_label": "Details",
+            "view_fatal": "View Failure",
+            "summary_title": "Quality Summary",
+            "rules": "Validation Rules",
+            "catalog": "Catalog Mapping",
+            "nulls": "Empty Fields",
+            "log_notice": "To get a row-by-row breakdown of these errors, please check the full audit log in the 'Inspect Logs' section below the terminal.",
+            "fatal_notice": "A critical non-compliance with the common data model has been detected in this entity. Please review the technical specification, the detailed log, and if the error persists, contact the coordinating node."
+        },
+        "reset": {
+            "title": "Reset Workspace?",
+            "text": "This will clear current logs and quality results.",
+            "confirm": "Yes, reset",
+            "cancel": "Cancel"
+        }
+    },
+    "analysis": {
+        "header": {
+            "step": "Analysis Step",
+            "title": "Run analysis",
+            "description": "Run the analysis scripts provided by the project coordinators. Once finalized, you can consult the detailed outputs and audit the source code in the 'Outputs' section."
+        },
+        "update_banner": {
+            "title": "Update Available",
+            "desc": "New analytical improvements found in repository.",
+            "btn_sync": "Sync latest scripts",
+            "btn_syncing": "Syncing..."
+        },
+        "db_catalog": {
+            "title": "Mapped Entities",
+            "no_tables": "No mapped entities found",
+            "btn_purge": "Clear project entities",
+            "purge_confirm": {
+                "title": "Delete project data?",
+                "text": "This action will delete all records from the entities that have been mapped to the Common Data Model.",
+                "btn": "Yes, delete records",
+                "cancel": "Cancel",
+                "success": "Records deleted",
+                "success_text": "Project entities have been cleared successfully."
+            }
+        },
+        "pipelines": {
+            "title": "Available analysis scripts",
+            "btn_check": "Check Updates",
+            "btn_checking": "Checking...",
+            "btn_launch": "Launch",
+            "version_label": "Ver.",
+            "check_swal": {
+                "title": "Check for Updates?",
+                "text": "The system will establish a temporary connection to <b>GitHub.com</b> to verify if a newer version exists.",
+                "info": "This action requires internet access. No project data or clinical results will be transmitted.",
+                "btn_connect": "Connect and Check"
+            },
+            "up_to_date": {
+                "title": "System Up to Date",
+                "text": "Your current analysis version ({{version}}) is the latest available."
+            },
+            "new_version_toast": "New analysis version available!"
+        },
+        "sync_swal": {
+            "title": "External Connection Required",
+            "text": "The system is about to establish a secure connection to <b>GitHub.com</b> to synchronize the latest analytic routines.",
+            "warning_scope": "Scope of Update:",
+            "warning_desc": "A <b>ZIP archive</b> will be downloaded and extracted. Only analysis scripts in <b>your_project/src/analysis-scripts</b> will be updated.",
+            "dep_title": "Library & Dependency Warning:",
+            "dep_desc": "If the new code requires <b>new libraries</b>, this synchronization will not be enough. In such cases, you must update the <b>Docker image</b>.",
+            "note_title": "Security & Connectivity Note:",
+            "note_desc": "If your security policy restricts outbound connections, please manually update the <b>Docker infrastructure</b>.",
+            "current_engine": "Current Engine",
+            "target_release": "Target Release",
+            "btn_allow": "Allow & Sync Now"
+        },
+        "stop": {
+            "title": "Stop Process?",
+            "text": "This will terminate the script immediately. Unsaved progress might be lost.",
+            "confirm": "Stop Now",
+            "success_title": "Stopped",
+            "success_text": "The process has been terminated.",
+            "error": "Could not stop the process."
+        },
+        "execution_finished": {
+            "title": "Analysis Completed",
+            "text": "The script '{{script}}' has finished successfully."
+        },
+        "terminal": {
+            "btn_clear": "Clear Console Output",
+            "title_output": "System Console Stream",
+            "title_update": "System Update Log",
+            "launching": "[SYSTEM] Launching {{name}}...",
+            "update_start": "[UPDATE] Handshake initialized. Waiting for GitHub stream...",
+            "notice": "⚠️ SYSTEM NOTICE: An analysis process is currently running in the background.",
+            "active_script": "Active script: {{name}} (PID: {{pid}})",
+            "wait_notice": "The UI will unlock automatically when finished.",
+            "btn_stop": "STOP PROCESS",
+            "terminated_by_user": "PROCESS TERMINATED BY USER.",
+            "finished_success": "EXECUTION FINISHED SUCCESSFULLY.",
+            "status_failed": "EXECUTION FAILED",
+            "error_notice": "The script finished with errors. Please check the log lines."
+        }
+    },
+    "results": {
+        "header": {
+            "step": "Outputs step",
+            "title": "Consult, download, and audit outputs.",
+            "subtitle": "Explore generated reports, download final output files, or inspect the original source code to ensure process transparency.",
+            "vault_explorer": "File Manager",
+            "syncing": "Synchronizing...",
+            "artifacts_found": "{{count}} files found",
+            "btn_bundle": "Download all",
+            "btn_processing": "Processing...",
+            "btn_purge": "Delete all"
+        },
+        "tabs": {
+            "analysis": "Analysis Results",
+            "dqa": "Validator & DQA",
+            "logs": "System Logs",
+            "audit": "Code Inspection"
+        },
+        "sidebar": {
+            "codebase_manifest": "Codebase Manifest",
+            "file_manifest": "File Manifest",
+            "source": "Source"
+        },
+        "viewport": {
+            "inspection": "System Code Inspection",
+            "preview": "File preview",
+            "download": "Download file",
+            "preparing": "Preparing...",
+            "read_only": "Read-Only Mode",
+            "integrity_stream": "Source integrity stream",
+            "artifact_stream": "File data stream",
+            "waiting": "Waiting for data stream...",
+            "standby_title": "File Manager",
+            "standby_desc": "Select a file to mount preview"
+        },
+        "download_toast": "Preparing download: {{filename}}",
+        "purge_swal": {
+            "title": "CLEAR PROJECT RESULTS?",
+            "text": "This will delete all output files and reset the analytical database. This action is irreversible.",
+            "btn_confirm": "YES, CLEAR EVERYTHING",
+            "success_title": "Repository Cleared",
+            "error_text": "Communication failed during the process."
+        }
+    },
+    "footer": {
+        "about": "About",
+        "authors": "Authors",
+        "funding": "Funding",
+        "terms": "Terms & Conditions",
+        "contact": "Contact",
+        "recommendations_title": "Tool Ecosystem",
+        "framework": "ASPIRE Framework • Internal Research Environment • 2026"
+    }
+}
