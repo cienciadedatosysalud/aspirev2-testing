@@ -50,8 +50,6 @@ COPY --from=ui_development --chown=$MAMBA_USER:$MAMBA_USER /usr/src/app/dist /va
 # COPY --chown=$MAMBA_USER:$MAMBA_USER gui_aspire /home/$MAMBA_USER
 COPY --chown=$MAMBA_USER:$MAMBA_USER api_aspire /home/$MAMBA_USER
 COPY --chown=$MAMBA_USER:$MAMBA_USER projects /home/$MAMBA_USER/projects
-RUN mkdir -p /home/$MAMBA_USER/projects/extensions
-COPY --chown=$MAMBA_USER:$MAMBA_USER extensions /home/$MAMBA_USER/projects/extensions/
 
 COPY --chown=$MAMBA_USER:$MAMBA_USER entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
