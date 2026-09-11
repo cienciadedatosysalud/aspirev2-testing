@@ -435,40 +435,43 @@ def get_results_by_project(project_id: str):
  
     project_name = "Unknown"
     if os.path.exists(config_file_path):
-        with open(config_file_path, 'r') as f:
-            content = json.load(f)
-            project_name = content.get('metadata', {}).get('project', 'Project')
+        try:
+            with open(config_file_path, 'r', encoding='utf-8') as f:
+                content = json.load(f)
+                project_name = content.get('metadata', {}).get('project', 'Project')
+        except Exception:
+            pass
  
-    all_files = glob.glob(os.path.join(outputs_path, "**", "*"), recursive=True)
     response_files = []
  
-    for file_path in all_files:
-        if not os.path.isfile(file_path):
-            continue
+    if os.path.exists(outputs_path):
+        for root, _, files in os.walk(outputs_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+               
+                # Obtenemos la ruta relativa desde la carpeta outputs (ej: "logs/checking.log" o "report.html")
+                rel_path = os.path.relpath(file_path, outputs_path)
+               
+                # Clasificación correcta por categoría
+                category = "analysis"
+                if rel_path.startswith("logs" + os.sep) or "logs" in rel_path:
+                    category = "logs"
+                elif rel_path.startswith("dqa" + os.sep) or "dqa" in rel_path or "validator" in file.lower():
+                    category = "dqa"
  
-        filename = os.path.basename(file_path)
-        rel_path = os.path.relpath(file_path, outputs_path)
-       
-        category = "analysis"
-        if "logs" in rel_path:
-            category = "logs"
-        elif "dqa" in rel_path or "validator" in filename.lower():
-            category = "dqa"
-        elif filename.lower().endswith(('.log', '.txt')) and "logs" not in rel_path:
-            category = "logs"
+                size_bytes = os.path.getsize(file_path)
+                mtime = os.path.getmtime(file_path)
  
-        size_bytes = os.path.getsize(file_path)
-        mtime = os.path.getmtime(file_path)
+                response_files.append({
+                    "name": file,               # Nombre para mostrar en el front
+                    "category": category,      # Categoría asignada
+                    "size": size_bytes,
+                    "mtime": mtime,
+                    "date": time.strftime('%Y-%m-%d %H:%M', time.localtime(mtime)),
+                    "path": rel_path            # Ruta relativa completa para la previsualización/descarga
+                })
  
-        response_files.append({
-            "name": filename,
-            "category": category,
-            "size": size_bytes,
-            "mtime": mtime,
-            "date": time.strftime('%Y-%m-%d %H:%M', time.localtime(mtime)),
-            "path": rel_path
-        })
- 
+    # Ordenar: primero HTMLs, luego por fecha más reciente
     response_files.sort(
         key=lambda x: (not x['name'].lower().endswith('.html'), -x['mtime'])
     )
@@ -486,30 +489,36 @@ def preview_output_file(project_id: str, category: str, filename: str):
     if not path:
         raise HTTPException(status_code=404, detail="Project not found")
  
+    outputs_base = os.path.join(path, "outputs")
+   
+    # Si filename ya incluye la subcarpeta (ej: "logs/fichero.log"), se une a outputs
+    # Si viene solo el nombre del fichero, se intenta resolver según categoría
     if category == "audit":
         base_folder = os.path.join(path, "src", "analysis-scripts")
+        file_path = os.path.join(base_folder, filename)
     else:
-        subfolder = ""
-        if category == "logs":
-            subfolder = "logs"
-        elif category == "dqa":
-            subfolder = "dqa"
-        base_folder = os.path.join(path, "outputs", subfolder)
+        file_path = os.path.join(outputs_base, filename)
+        if not os.path.exists(file_path):
+            # Fallback por si la llamada del front omite la subcarpeta
+            subfolder = "logs" if category == "logs" else ("dqa" if category == "dqa" else "")
+            file_path = os.path.join(outputs_base, subfolder, filename)
  
-    file_path = os.path.join(base_folder, filename)
- 
-    if not os.path.abspath(file_path).startswith(os.path.abspath(base_folder)):
+    # Seguridad: Evitar Traversal Vulnerabilities
+    real_base = os.path.abspath(outputs_base if category != "audit" else os.path.join(path, "src", "analysis-scripts"))
+    if not os.path.abspath(file_path).startswith(real_base):
         raise HTTPException(status_code=403, detail="Access denied")
  
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail="File not found")
+    if not os.path.exists(file_path) or not os.path.isfile(file_path):
+        raise HTTPException(status_code=404, detail=f"File {filename} not found")
  
+    # Mime Types
     media_type = "text/plain"
-    if filename.lower().endswith(".html"):
+    ext = filename.lower()
+    if ext.endswith(".html"):
         media_type = "text/html"
-    elif filename.lower().endswith(".json"):
+    elif ext.endswith(".json"):
         media_type = "application/json"
-    elif filename.lower().endswith((".png", ".jpg", ".jpeg")):
+    elif ext.endswith((".png", ".jpg", ".jpeg")):
         media_type = "image/png"
  
     return FileResponse(file_path, media_type=media_type)
