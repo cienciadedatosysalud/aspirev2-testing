@@ -4,7 +4,7 @@ COPY gui_aspire ./
 RUN npm install
 RUN npm run build
 
-FROM mambaorg/micromamba:2.9-debian13
+FROM mambaorg/micromamba:bookworm-slim
 
 USER root
 
