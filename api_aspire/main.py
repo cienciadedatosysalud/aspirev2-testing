@@ -1107,13 +1107,24 @@ def download_single(project_id: str, category: str, filename: str):
     file_path = os.path.join(path, "outputs", sub, filename)
     return FileResponse(file_path, filename=filename)
  
- 
+
 @app.get("/api/datamodel/{project_id}")
-async def download_documentation(project_id: str):
-    path_ = get_project_path_by_uuid(project_id)
-    file_list = glob.glob(path_ + "/docs/**", recursive=True)
-    return zipfiles(file_list)
- 
+def download_documentation(project_id: str):
+    path = get_project_path_by_uuid(project_id)
+    docs_path = os.path.join(path, "docs")
+    zip_path = os.path.join(path, f"docs_{project_id}.zip")
+
+    if not os.path.exists(docs_path):
+        raise HTTPException(status_code=404, detail="La carpeta de documentación no existe.")
+
+    # Crea el archivo comprimido en disco
+    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(docs_path):
+            for file in files:
+                full_path = os.path.join(root, file)
+                zipf.write(full_path, os.path.relpath(full_path, docs_path))
+
+    return FileResponse(zip_path, filename=f"{project_id}_docs.zip")
  
 def zipfiles(file_list):
     io = BytesIO()
