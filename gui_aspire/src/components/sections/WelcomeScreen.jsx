@@ -8,35 +8,55 @@ export default function WelcomeScreen({ project, selectedProjectId }) {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = async () => {
-    if (!selectedProjectId) return;
+  if (!selectedProjectId) return;
 
-    setIsDownloading(true);
+  setIsDownloading(true);
 
-    const toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-    });
+  const toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+  });
 
-    toast.fire({
-      icon: 'info',
-      title: t('welcome.download.toast_title')
-    });
+  toast.fire({
+    icon: 'info',
+    title: t('welcome.download.toast_title')
+  });
 
-    try {
-      window.location.href = `/api/datamodel/${selectedProjectId}`;
-      setTimeout(() => setIsDownloading(false), 2000);
-    } catch (error) {
-      setIsDownloading(false);
-      Swal.fire(
-        t('welcome.download.error_title'), 
-        t('welcome.download.error_text'), 
-        'error'
-      );
+  try {
+    const response = await fetch(`/api/datamodel/${selectedProjectId}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+
+    // Convertir la respuesta binaria a un Blob para descargarlo
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    
+    // Crear un enlace temporal invisible para disparar la descarga
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${selectedProjectId}_docs.zip`);
+    document.body.appendChild(link);
+    link.click();
+    
+    // Limpieza de memoria y DOM
+    link.parentNode.removeChild(link);
+    window.URL.revokeObjectURL(url);
+
+  } catch (error) {
+    Swal.fire(
+      t('welcome.download.error_title'), 
+      t('welcome.download.error_text'), 
+      'error'
+    );
+  } finally {
+    setIsDownloading(false);
+  }
+};
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[90vh] text-[#1D1D1B] px-4">

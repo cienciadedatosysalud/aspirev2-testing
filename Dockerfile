@@ -17,6 +17,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nginx \
     && rm -rf /var/lib/apt/lists/*
 
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 ARG QUARTO_VERSION="1.5.57"
 RUN curl -o quarto-linux-amd64.deb -L https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb \
     && gdebi --non-interactive quarto-linux-amd64.deb \
@@ -51,10 +55,7 @@ COPY --from=ui_development --chown=$MAMBA_USER:$MAMBA_USER /usr/src/app/dist /va
 COPY --chown=$MAMBA_USER:$MAMBA_USER api_aspire /home/$MAMBA_USER
 COPY --chown=$MAMBA_USER:$MAMBA_USER projects /home/$MAMBA_USER/projects
 
-COPY --chown=$MAMBA_USER:$MAMBA_USER entrypoint.sh /opt/entrypoint.sh
-RUN chmod +x /opt/entrypoint.sh
-
 EXPOSE 3000
 
 WORKDIR /home/$MAMBA_USER
-ENTRYPOINT ["micromamba","run","-n","aspire","/opt/entrypoint.sh"]
+ENTRYPOINT ["micromamba","run","-n","aspire","entrypoint.sh"]
