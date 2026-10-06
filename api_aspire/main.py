@@ -819,7 +819,7 @@ async def get_version_manifest(project_id: str):
         if os.path.exists(config_path):
             with open(config_path, "r", encoding="utf-8") as f:
                 config_data = json.load(f)
-                cdm_v = config_data.get("cdmb_version", "Not found")
+                cdm_v = config_data.get("metadata", {}).get("version_sem", "Not found")
     except Exception as e:
         print(f"Error reading CDM config: {e}")
         cdm_v = "Error reading file"
