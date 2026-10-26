@@ -33,12 +33,16 @@ export default function ResultsViewer({ projectId, projectName, refreshSignal })
         ? `/api/projects/audit-scripts/${projectId}`
         : `/api/results/${projectId}`;
 
-      const res = await fetch(endpoint);
+      const res = await fetch(`${endpoint}?t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       const files = activeTab === 'audit' ? data : (data.files || []);
 
       setProjectFiles(files);
-      setActiveFile(null);
+      // Opcional: si activeFile ya estaba seleccionado, actualiza su referencia con los nuevos datos
+      if (activeFile) {
+        const updated = files.find(f => f.name === activeFile.name);
+        if (updated) setActiveFile(updated);
+      }
     } catch (error) {
       setProjectFiles([]);
     } finally {
@@ -71,7 +75,9 @@ export default function ResultsViewer({ projectId, projectName, refreshSignal })
 
   const downloadSingleFile = (file) => {
     const category = activeTab === 'audit' ? 'audit' : file.category;
-    const url = `/api/projects/outputs/${projectId}/download/${category}/${file.name}`;
+    // timestamp dinámico para evitar la versión en caché del navegador
+    const cacheBuster = file.mtime ? Math.floor(file.mtime * 1000) : Date.now();
+    const url = `/api/projects/outputs/${projectId}/download/${category}/${file.name}?t=${cacheBuster}`;
     handleDownloadAction(url, file.name);
   };
 
@@ -119,11 +125,19 @@ export default function ResultsViewer({ projectId, projectName, refreshSignal })
         return;
       }
       try {
-        const url = activeTab === 'audit'
+        const baseUrl = activeTab === 'audit'
           ? `/api/projects/outputs/${projectId}/preview/audit/${activeFile.name}`
           : `/api/projects/outputs/${projectId}/preview/${activeFile.category}/${activeFile.name}`;
 
-        const res = await fetch(url);
+        // <-- MODIFICADO: timestamp y directivas no-cache
+        const timestamp = activeFile.mtime ? Math.floor(activeFile.mtime * 1000) : Date.now();
+        const res = await fetch(`${baseUrl}?t=${timestamp}`, {
+          cache: 'no-store',
+          headers: {
+            'Pragma': 'no-cache',
+            'Cache-Control': 'no-cache'
+          }
+        });
         const text = await res.text();
         setFileContent(text);
       } catch (e) {
@@ -336,10 +350,11 @@ export default function ResultsViewer({ projectId, projectName, refreshSignal })
                 <div className="w-full h-full bg-white rounded-2xl overflow-hidden ring-1 ring-slate-300 shadow-sm relative flex flex-col">
                   {activeFile.name.endsWith('.html') ? (
                     <iframe
-                      title="Artifact Preview"
-                      src={`/api/projects/outputs/${projectId}/preview/${activeTab === 'audit' ? 'audit' : activeFile.category}/${activeFile.name}`}
-                      className="w-full h-full border-none"
-                    />
+                        key={`${activeFile.name}-${activeFile.mtime || refreshSignal || Date.now()}`}
+                        title="Artifact Preview"
+                        src={`/api/projects/outputs/${projectId}/preview/${activeTab === 'audit' ? 'audit' : activeFile.category}/${activeFile.name}?t=${activeFile.mtime ? Math.floor(activeFile.mtime * 1000) : Date.now()}`}
+                        className="w-full h-full border-none"
+                      />
                   ) : (
                     <div className="w-full h-full bg-[#09090b] overflow-auto custom-scrollbar flex flex-col">
                       <div className="p-8 min-h-full font-mono text-[11px] leading-relaxed">
