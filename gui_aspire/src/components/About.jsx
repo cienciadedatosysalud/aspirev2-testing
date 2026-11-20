@@ -82,95 +82,162 @@ export default function InfoPage() {
         {/* SECTION: TERMS AND CONDITIONS */}
         <section id="termsconditions" className="scroll-mt-28">
           <div className="bg-white p-10 md:p-16 rounded-[3rem] border border-slate-300 shadow-xl space-y-12">
-            <header>
-              <h1 className="text-4xl font-black text-slate-900 mb-2 italic uppercase tracking-tighter">Terms and Conditions</h1>
-              <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">Last updated: June 28, 2023</p>
+            <header className="space-y-4">
+              <div>
+                <h1 className="text-4xl font-black text-slate-900 mb-2 italic uppercase tracking-tighter">Terms and Conditions</h1>
+                <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">Last updated: 2026-11-10</p>
+              </div>
+              
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 text-sm text-slate-600 space-y-2">
+                <p>
+                  <strong className="text-slate-800">Authorship:</strong> Data Science for Health Services and Policy research group in the Institute for Health Sciences in Aragón (IACS) &amp; Contributing Authors
+                </p>
+                <p>
+                  <strong className="text-slate-800">Licensing Framework:</strong> Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0), details available at{' '}
+                  <a
+                    href="https://github.com/cienciadedatosysalud/aspire/blob/main/LICENSE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#3C64A3] font-semibold underline hover:text-slate-900 transition-colors break-all"
+                  >
+                    https://github.com/cienciadedatosysalud/aspire/blob/main/LICENSE
+                  </a>
+                </p>
+              </div>
             </header>
 
             <div className="prose prose-slate max-w-none text-slate-600 text-justify space-y-10">
-              <p className="italic">Please read these terms and conditions carefully before using the Analytic Software Pipeline Interface for Reproducible Execution (ASPIRE).</p>
+              <p className="italic">Please read these Terms and Conditions carefully before using the ASPIRE (Analytic Software Pipeline Interface for Reproducible Execution).</p>
 
-              {/* ACKNOWLEDGMENT */}
+              {/* 1. ACKNOWLEDGMENT */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Acknowledgment</h2>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">1. Acknowledgment and Open-Source Licensing</h2>
                 <div className="space-y-4">
-                  <p className="text-base">These are the Terms and Conditions governing the use of ASPIRE and the agreement that operates between You and the Author(s). These Terms and Conditions set out the rights and obligations of all users regarding the use of the Software.</p>
-                  <p className="text-base">Your access to and use of ASPIRE is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.</p>
-                  <p className="font-bold text-slate-800 underline decoration-slate-300 underline-offset-4">By accessing or using ASPIRE You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Software.</p>
-                  <p className="text-base">You represent that you are over the age of 18. The Author(s) does not permit those under 18 to use ASPIRE.</p>
-                  <p className="text-base">Your access to and use of ASPIRE is also conditioned on Your acceptance of and compliance with the System Level Information Security Policy of IACS. Please refer to System Level Information Security Policy of IACS carefully before using ASPIRE.</p>
+                  <p className="text-base">
+                    These Terms of Use set out the rights and obligations of all users regarding the access, deployment and/or use of the Analytic Software Pipeline Interface for Reproducible Execution (ASPIRE), a tool that allows you to containerize real life data analysis pipelines developed in Python or R in a simple, standardized and transparent way to enable reproducibility and ease of deployment in a federated approach.
+                  </p>
+                  <p className="font-bold text-slate-800 underline decoration-slate-300 underline-offset-4">
+                    The Authors do not permit those under 18 years old to use the Analytic Software Pipeline Interface for Reproducible Execution (ASPIRE).
+                  </p>
+                  <p className="text-base">
+                    <strong>Attribution Requirement:</strong> You are free to share, adapt, and build upon this work, provided that You give appropriate credit to the authors and the Instituto Aragonés de Ciencias de la Salud (IACS), provide a link to the license, and indicate if changes were made (as specified in the repository&apos;s{' '}
+                    <a
+                      href="https://github.com/cienciadedatosysalud/aspire/blob/main/LICENSE"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#3C64A3] font-semibold underline hover:text-slate-900 transition-colors"
+                    >
+                      LICENSE
+                    </a>
+                    ).
+                  </p>
+                  <p className="text-base">
+                    <strong>Research Purpose Only:</strong> ASPIRE is designed strictly for scientific, academic, observational, and epidemiological health data research. It is not a certified medical device under Regulation (EU) 2017/745, nor is it validated or intended for use in direct patient care, clinical decision-making, medical diagnosis, or triage.
+                  </p>
                 </div>
               </div>
 
-              {/* LINKS */}
+              {/* 2. FEDERATED EXECUTION & DATA SOVEREIGNTY */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Links to Other Websites</h2>
-                <p className="text-base">ASPIRE may contain links to third-party web sites or services that are not owned or controlled by the Author(s). The Author(s) has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services.</p>
-                <p className="mt-4">We strongly advise You to read the terms and conditions and privacy policies of any third-party web sites or services that You visit.</p>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">2. Federated Execution &amp; Data Sovereignty</h2>
+                <p className="text-base mb-4">When ASPIRE is executed locally:</p>
+                <ul className="list-disc pl-6 space-y-2 text-base">
+                  <li>The analytical code executes entirely within Your local infrastructure. The tool does not extract or transmit individual-level patient records (microdata) back to the Authors.</li>
+                  <li>The executing institution acts as the exclusive Data Controller under the GDPR and remains solely responsible for local data security, governance, quality, anonymization, and regulatory compliance.</li>
+                </ul>
               </div>
 
-              {/* TERMINATION */}
+              {/* 3. LINKS TO OTHER WEBSITES */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Termination</h2>
-                <p className="text-base">We may terminate or suspend Your access immediately, for any reason whatsoever with or without a cause, without prior notice and without liability, including without limitation if You breach these Terms and Conditions. Upon termination, Your right to use ASPIRE will cease immediately.</p>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">3. Links to Other Websites and Third-Party Resources</h2>
+                <div className="space-y-4">
+                  <p className="text-base">
+                    The ASPIRE and its documentation may reference, interface with, or contain links to third-party websites, data ontologies, terminologies, or software dependencies that are not owned or controlled by the Authors.
+                  </p>
+                  <p className="text-base">
+                    The Authors have no control over, and assume no responsibility for, the content, privacy policies, terms of use, or practices of any third-party websites, dependencies, or services. You acknowledge and agree that the Authors shall not be liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such third-party content, goods, ontologies, or services.
+                  </p>
+                </div>
               </div>
 
-              {/* LIABILITY */}
+              {/* 4. TERMINATION AND BREACH */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Limitation of Liability</h2>
-                <p className="text-base">In no event shall the Author(s) be liable for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to damages for loss of profits, goodwill, data, or other intengible losses, arising out of or in connection with the use or inability to use ASPIRE.</p>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">4. Termination and Breach</h2>
+                <ul className="list-disc pl-6 space-y-2 text-base">
+                  <li>
+                    <strong>Code License:</strong> In accordance with CC BY-NC 4.0 (Section 6.a), Your right to use the software code terminates automatically if You fail to comply with the license terms (notably attribution requirements). Upon remedying the violation, Your rights are reinstated in accordance with CC BY-NC 4.0 terms.
+                  </li>
+                </ul>
               </div>
 
-              {/* AS IS */}
+              {/* 5. AS IS */}
               <div className="bg-slate-50 p-8 rounded-3xl border border-slate-300/50">
-                <h2 className="text-2xl font-black text-slate-900 mb-4 uppercase italic tracking-tight">"AS IS" and "AS AVAILABLE" Disclaimer</h2>
-                <p className="text-sm leading-relaxed">
-                  ASPIRE is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Author(s) expressly disclaims all warranties, whether express, implied, statutory or otherwise, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement.
+                <h2 className="text-2xl font-black text-slate-900 mb-4 uppercase italic tracking-tight">5. &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h2>
+                <div className="space-y-4 text-sm leading-relaxed">
+                  <p>In accordance with Section 5(a) of the CC BY-NC 4.0 License and to the maximum extent permitted under applicable law:</p>
+                  <p>
+                    The ASPIRE is provided to You &quot;AS IS&quot; and &quot;AS AVAILABLE&quot;, without warranty of any kind. To the maximum extent permitted under applicable law, the Authors and Contributing Authors (collectively, the &quot;Authors&quot;), together with their affiliated institutions and licensors, expressly disclaim all warranties, whether express, implied, statutory, or otherwise, with respect to the software and documentation. This includes all implied warranties of merchantability, fitness for a particular purpose, title, non-infringement, and any warranties that may arise out of course of dealing, course of performance, usage, or trade practice.
+                  </p>
+                  <p>
+                    You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.
+                  </p>
+                </div>
+              </div>
+
+              {/* 6. LIMITATION OF LIABILITY */}
+              <div>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">6. Limitation of Liability</h2>
+                <div className="space-y-4">
+                  <p className="text-base">In accordance with Section 5(b) of the CC BY-NC 4.0 License and to the maximum extent permitted under applicable law:</p>
+                  <p className="text-base">
+                    In no event shall the Authors, Contributing Authors or their affiliated institutions be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute tools, data corruption, analytical bias, research setbacks, loss of data, loss of goodwill, or system downtime), under any legal theory (contract, tort, negligence, or strict liability), arising in any way out of the use, execution, or inability to use ASPIRE.
+                  </p>
+                  <p className="text-base">
+                    Nothing in these Terms limits or excludes liability where such limitation is prohibited by applicable law, particularly liability arising from willful misconduct (dolo) or gross negligence (negligencia grave) pursuant to Article 1102 of the Spanish Civil Code.
+                  </p>
+                </div>
+              </div>
+
+              {/* 7. DISPUTES RESOLUTION */}
+              <div>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">7. Disputes Resolution</h2>
+                <p className="text-base">
+                  If You have any concern, question, or dispute regarding these Terms of Use or the ASPIRE, You agree to first attempt to resolve the dispute informally and in good faith by contacting the Authors before initiating any formal legal proceedings.
                 </p>
               </div>
 
-              {/* GOVERNING LAW */}
+              {/* 8. GOVERNING LAW AND JURISDICTION */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Governing Law</h2>
-                <p className="text-base">The laws of the Country (SPAIN), excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">8. Governing Law and Jurisdiction</h2>
+                <p className="text-base">
+                  The laws of Spain, excluding its conflict of law rules, shall govern these Terms and Your use of the software. Any legal action, suit, or proceeding arising out of or relating to these Terms that cannot be settled amicably shall be submitted to the exclusive jurisdiction of the competent Courts of Zaragoza, Spain.
+                </p>
               </div>
 
-              {/* DISPUTES */}
+              {/* 9. SEVERABILITY AND WAIVER */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Disputes Resolution</h2>
-                <p className="text-base">If You have any concern or dispute about ASPIRE, You agree to first try to resolve the dispute informally by contacting the Author(s).</p>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">9. Severability and Waiver</h2>
+                <ul className="list-disc pl-6 space-y-3 text-base">
+                  <li>
+                    <strong>Severability:</strong> If any provision of these Terms is held to be unenforceable or invalid under applicable law, such provision will be modified and interpreted to accomplish the objectives of such provision to the greatest extent possible under such law, and the remaining provisions will continue in full force and effect.
+                  </li>
+                  <li>
+                    <strong>Waiver:</strong> Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party&apos;s ability to exercise such right or require such performance at any time thereafter, nor shall the waiver of a breach constitute a waiver of any subsequent breach.
+                  </li>
+                </ul>
               </div>
 
-              {/* EU USERS */}
+              {/* 10. TRANSLATION AND INTERPRETATION */}
               <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">For European Union (EU) Users</h2>
-                <p className="text-base">If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which you are resident in.</p>
-              </div>
-
-              {/* SEVERABILITY */}
-              <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Severability and Waiver</h2>
-                <div className="space-y-4">
-                  <p className="text-base"><strong>Severability:</strong> If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible.</p>
-                  <p className="text-base"><strong>Waiver:</strong> Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not effect a party's ability to exercise such right.</p>
-                </div>
-              </div>
-
-              {/* TRANSLATION */}
-              <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">Translation Interpretation</h2>
-                <p className="text-base">These Terms and Conditions may have been translated. You agree that the original English text shall prevail in the case of a dispute.</p>
-              </div>
-
-              {/* CHANGES */}
-              <div>
-                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic tracking-tight">Changes to These Terms and Conditions</h2>
-                <p className="text-base">We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. By continuing to access or use ASPIRE after those revisions become effective, You agree to be bound by the revised terms.</p>
+                <h2 className="text-2xl font-black text-[#3C64A3] mb-4 uppercase italic">10. Translation and Interpretation</h2>
+                <p className="text-base">
+                  These Terms and Conditions may be translated into other languages for convenience or documentation purposes. You agree that the original English text shall prevail in the case of any discrepancy, ambiguity, or dispute.
+                </p>
               </div>
             </div>
           </div>
         </section>
-
+        
         {/* CONTACT US */}
         <section id="contact" className="scroll-mt-28 text-center pb-20">
           <div className="inline-flex flex-col items-center">
@@ -178,11 +245,14 @@ export default function InfoPage() {
               <HiMail className="w-8 h-8" />
             </div>
             <h1 className="text-4xl font-black text-slate-900 mb-4 italic uppercase tracking-tighter">Contact Us</h1>
-            <p className="text-slate-500 mb-8 max-w-md mx-auto">
-              If you have any questions about these Terms and Conditions, You can contact us:
+            <p className="text-slate-500 mb-3 max-w-lg mx-auto">
+              If You have any questions about these Terms and Conditions or the ASPIRE, You can contact the project team:
+            </p>
+            <p className="text-sm font-semibold text-slate-700 mb-8 max-w-lg mx-auto">
+              Instituto Aragonés de Ciencias de la Salud (IACS) — Data Science for Health Services and Policy research group
             </p>
             <a
-              href="https://cienciadedatosysalud.org/contacto/"
+              href="https://cienciadedatosysalud.org/en/contact/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-5 bg-slate-900 text-white rounded-2xl text-xs font-black uppercase tracking-[0.3em] hover:bg-[#3C64A3] transition-all shadow-lg flex items-center gap-3"
